@@ -1,0 +1,340 @@
+{
+  "arms": [
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-000.raw",
+      "response_bytes": 1192,
+      "response_sha256": "e484f928f069c23a14f8180bc8670c66a50101f460001251a2c399193c208bcd",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-001.raw",
+      "response_bytes": 1188,
+      "response_sha256": "30dd23e5775502344c4a71bc21f71fd75ebc0e45faec9423754b11def2eef3f0",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-002.raw",
+      "response_bytes": 1196,
+      "response_sha256": "e5b37b3ffb25a39e36db13ed36838191e6a3db10a7131d599ff06d1f68473d40",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-003.raw",
+      "response_bytes": 1188,
+      "response_sha256": "401695cf79b5df789e8d4b91298338c81f15755dd1744e0e023d19de6eee55af",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-004.raw",
+      "response_bytes": 1192,
+      "response_sha256": "61e77c779f5d5a3588e3b91ff8ca58bb53fa5e84f26276327cd1e66344efdf3e",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-005.raw",
+      "response_bytes": 1192,
+      "response_sha256": "34dcddcd8168c17fa8dcbe4114f4f042e6bc3837a39ac3a0ced60ad5883ad9b0",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-006.raw",
+      "response_bytes": 1186,
+      "response_sha256": "febfc40f24835527364c581a643853c0002159480b029abbc2ef2df164fa3b05",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-007.raw",
+      "response_bytes": 1190,
+      "response_sha256": "3ce5cc74425ec6a8097cea5b2e6b46c4d69f33c8e9fff7a565623c45b7659409",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-008.raw",
+      "response_bytes": 1192,
+      "response_sha256": "7b340ef517ce20570f0e0d6ad44c82306b2a83a8fbf13c75b8cbc8ec31fa83f0",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-009.raw",
+      "response_bytes": 1194,
+      "response_sha256": "19ea28baf4ca0a8a47623295a994784ffd1f33a46aba683d2cd9b94a706c5ccc",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-010.raw",
+      "response_bytes": 1188,
+      "response_sha256": "51abe740cfd241eed8614d1a003e829e6614b18e32323b7e8c7d4372a83e060d",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-011.raw",
+      "response_bytes": 1190,
+      "response_sha256": "d41618b4f34373e3c3275b48a4a05d726732fe0c02a7b70e8d820e719d4c344e",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-012.raw",
+      "response_bytes": 1188,
+      "response_sha256": "0264e56d6ff5dae33500a9fe0fa3d5f48ad2f244d14f2f24d38a4b6567d5a057",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-013.raw",
+      "response_bytes": 1188,
+      "response_sha256": "2160903a3359c4afdd0c798bd3e750112f96892b3b671f6bc4d43dee764ec199",
+      "status": 200,
+      "tried": 4096
+    },
+    {
+      "error": null,
+      "oom": true,
+      "oom_4096": true,
+      "raw_path": "arm-014.raw",
+      "response_bytes": 1188,
+      "response_sha256": "42a94494f06a4e4535ab4626d9dd2a60b8dbecd65de9e06e7edb8fdec236dc28",
+      "status": 200,
+      "tried": 4096
+    }
+  ],
+  "b": [
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-000.raw",
+      "response_bytes": 755,
+      "response_sha256": "c13daf40dbf030edf112648773b532caa597fcd57ef57a8bb6f1d5b37d66c6bd",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-001.raw",
+      "response_bytes": 755,
+      "response_sha256": "c10a90f7f84cf6863e3940e6912c7dfbfe2db1580c57ad22ad8f1b3ae4df1851",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-002.raw",
+      "response_bytes": 757,
+      "response_sha256": "54bd821a48ef7e89806da9e1358e2fdd785902e190e7662f0e9b8b5dd6c26c9b",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-003.raw",
+      "response_bytes": 745,
+      "response_sha256": "c5b1c6cf8c831a22c5508883fa38e75f179df383f62dc1beb87ee66d76678082",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-004.raw",
+      "response_bytes": 749,
+      "response_sha256": "bb8b2bc5c3e47380f495b89be2b34f16aa5105c26f407cbb22697b5cd4027faf",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-005.raw",
+      "response_bytes": 743,
+      "response_sha256": "91e0b964c2f7907661dd278352634eef9f29a3bcd28a719d693309a0dea9df12",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-006.raw",
+      "response_bytes": 749,
+      "response_sha256": "15b53557c2881cd4e2b3db88ed80ca52150164f6863c9c5affbb96dff916bef8",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-007.raw",
+      "response_bytes": 745,
+      "response_sha256": "6e54654b9def326276dbe87042d4e781a3d195265fbb3a0ca960978383a10f1e",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-008.raw",
+      "response_bytes": 753,
+      "response_sha256": "92b748fc5a65d452eabcf3c68752d0e2cdcd67f2b14a69a1b86039e9f0798f5f",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-009.raw",
+      "response_bytes": 745,
+      "response_sha256": "eef898374e606c7f6b19c0386abf4394ffbe1335e013e5c819e69234f49f4f29",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "heap": "0x7f2b4d800000",
+      "oom": true,
+      "oom_4096": false,
+      "oracle": "triple-length-fatal",
+      "pointer": "0x7f2b4d8a6f00",
+      "raw_path": "b-010.raw",
+      "response_bytes": 874,
+      "response_sha256": "e620eb5d3c91667cced61e2c64e867569a7855189c9f0a77c78b5fe4dc3690d8",
+      "status": 200,
+      "tried": 419471883717920
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-011.raw",
+      "response_bytes": 747,
+      "response_sha256": "2ce21431bd7094e702784dccf0596ce7b84f50f6522b1baa21dfe762ab525e49",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-012.raw",
+      "response_bytes": 749,
+      "response_sha256": "23fa94b3bdd9810bc5c93c56d10ae5b0c488f7563cd36836aea88bd6895f074d",
+      "status": 200,
+      "tried": null
+    },
+    {
+      "error": null,
+      "heap": "0x7f2b4d800000",
+      "oom": true,
+      "oom_4096": false,
+      "oracle": "triple-length-fatal",
+      "pointer": "0x7f2b4d8a6f00",
+      "raw_path": "b-013.raw",
+      "response_bytes": 876,
+      "response_sha256": "367a6a91dec11065f7ca9de89583d0cde8672e4a7e9b6a6926fde64bc94393b0",
+      "status": 200,
+      "tried": 419471883717920
+    },
+    {
+      "error": null,
+      "oom": false,
+      "oom_4096": false,
+      "raw_path": "b-014.raw",
+      "response_bytes": 749,
+      "response_sha256": "bd7172cae8dc545e5c21facedf20d5000019cf93f9d090cf7f122d56fb34fb3a",
+      "status": 200,
+      "tried": null
+    }
+  ],
+  "geometry": {
+    "arms": 15,
+    "arrays": 900,
+    "b_count": 15,
+    "pressure": 550000,
+    "schedule": "all A concurrent, then all B concurrent"
+  },
+  "request_cap": 30,
+  "request_count": 30,
+  "schema": "cfctf/strict-heap-flood/v1",
+  "selected": {
+    "heap": "0x7f2b4d800000",
+    "oracles": [
+      "triple-length-fatal"
+    ],
+    "pointers": [
+      "0x7f2b4d8a6f00"
+    ],
+    "votes": 2
+  },
+  "target": "https://php-rce.cloudflare.app/php/index.php",
+  "verdict": "STRICT_HEAP",
+  "wire": {
+    "arm_bytes": 1012641,
+    "arm_sha256": "158a87f3d00d51c2cb5e0f64776a8208ea0fa493204bf5d14c5f01b7ef747b41",
+    "b_bytes": 1236226,
+    "b_sha256": "719a69106c422aa87b44bef4f71f53d300c7f6d033af443a410af4da72896f9c"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "code_exit": 0,
+  "code_verdict": "STRICT_CODE_POINTER",
+  "code_wire": {
+    "consumer_bytes": 92440,
+    "consumer_sha256": "b3b9380a6cb8b2d56d7860bc7b57e2747f9709e15926e20d091e5c9f806e35bf",
+    "producer_bytes": 251721,
+    "producer_sha256": "e88322cc1569b936256bbd2a96b9a166d289228ccd6d57151715c67c539d789b"
+  },
+  "finished_utc": "2026-11-03T02:43:27Z",
+  "heap_exit": 0,
+  "heap_verdict": "STRICT_HEAP",
+  "heap_wire": {
+    "arm_bytes": 1012641,
+    "arm_sha256": "158a87f3d00d51c2cb5e0f64776a8208ea0fa493204bf5d14c5f01b7ef747b41",
+    "b_bytes": 1236226,
+    "b_sha256": "719a69106c422aa87b44bef4f71f53d300c7f6d033af443a410af4da72896f9c"
+  },
+  "request_plan": {
+    "code": "prestage field-66 A5/B5, release A then B",
+    "heap": "A15 then B15, concurrent within each wave",
+    "terminal": "A80; B25; S25 fanout; D submitted on each successful S completion",
+    "verifier_cap": 1
+  },
+  "schema": "cfctf-r8/bare-cr-accepted-schedule/1",
+  "started_utc": "2026-11-03T02:43:13Z",
+  "strict_pair": {
+    "code_stop_classes": [],
+    "code_votes": 2,
+    "direct_measurements": true,
+    "heap": "0x7f2b4d800000",
+    "heap_votes": 2,
+    "libphp": "0x7f2b4f200000",
+    "same_run": true,
+    "separation": "0x1a00000"
+  },
+  "target": "https://php-rce.cloudflare.app/php/index.php",
+  "terminal_exit": 0,
+  "terminal_request_count": 155,
+  "terminal_verdict": "VERIFIER_ACCEPTED",
+  "verdict": "VERIFIER_ACCEPTED",
+  "verifier_accepted": true,
+  "artifact_paths": {
+    "heap_receipt": "heap-receipt.json",
+    "code_receipt": "code-receipt.json",
+    "terminal_receipt": "terminal-receipt.json",
+    "carrier_log": "carrier-log.json",
+    "flag": "flag.txt",
+    "winning_response": "winning-D-008.raw",
+    "verifier_response": "verify-008.raw"
+  }
+}

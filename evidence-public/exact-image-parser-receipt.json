@@ -1,0 +1,119 @@
+{
+  "cr3_cr4_one_byte_body_difference": true,
+  "mechanism": "bare_cr_leading_value_whitespace_plus_colonless_name_reconstruction",
+  "rows": [
+    {
+      "bare_cr_after_content_disposition_colon": false,
+      "body_bytes": 271,
+      "body_sha256": "809088aca8460d2d2cdbc063f0e01350f59b8b6de21a2ebdfb9e67a1080c4e33",
+      "content_type": "multipart/form-data; boundary=B",
+      "label": "C3",
+      "physical_progress_header_lines": 1,
+      "raw_protected_name_contiguous": true,
+      "response": {
+        "files_keys": [
+          "file"
+        ],
+        "garbled_warning": true,
+        "post_keys": [
+          "PHP_SESSION_UPLOAD_PROGRESS"
+        ],
+        "progress": "bare-cr-reconstruction-probe",
+        "response_complete": true,
+        "response_sha256": "203d3832854396add1611ffc981dfb20f803d5da64ab14cfddf7ec6eb1c47b96",
+        "status": 200
+      }
+    },
+    {
+      "bare_cr_after_content_disposition_colon": false,
+      "body_bytes": 271,
+      "body_sha256": "64b8cdd275daff4392a05252076afbeb7d327435f1883b612bae9cf40f528afa",
+      "content_type": "multipart/form-data; boundary=B",
+      "label": "C4",
+      "physical_progress_header_lines": 1,
+      "raw_protected_name_contiguous": false,
+      "response": {
+        "files_keys": [
+          "file"
+        ],
+        "garbled_warning": true,
+        "post_keys": [
+          "PHP_SESSION_UPLOAD_PROGRESX"
+        ],
+        "progress": null,
+        "response_complete": true,
+        "response_sha256": "9c67464f13b1192ffe32984091fea53b5b7b4f589e43cd55bf721473393db68b",
+        "status": 200
+      }
+    },
+    {
+      "bare_cr_after_content_disposition_colon": false,
+      "body_bytes": 323,
+      "body_sha256": "4e963abf30b14d0994d41def92065acee6a423a4d308eb26fe110bc29266f8ec",
+      "content_type": "multipart/form-data; boundary=B",
+      "label": "CHAR",
+      "physical_progress_header_lines": 27,
+      "raw_protected_name_contiguous": false,
+      "response": {
+        "files_keys": [
+          "file"
+        ],
+        "garbled_warning": true,
+        "post_keys": [
+          "PHP_SESSION_UPLOAD_PROGRESS"
+        ],
+        "progress": "bare-cr-reconstruction-probe",
+        "response_complete": true,
+        "response_sha256": "203d3832854396add1611ffc981dfb20f803d5da64ab14cfddf7ec6eb1c47b96",
+        "status": 200
+      }
+    },
+    {
+      "bare_cr_after_content_disposition_colon": true,
+      "body_bytes": 323,
+      "body_sha256": "bacc0ea9446fda5056fb1ee590d1afa1e3448878fb5a6a7eed6a51da9f70c1be",
+      "content_type": "multipart/form-data; boundary=B",
+      "label": "CR4",
+      "physical_progress_header_lines": 27,
+      "raw_protected_name_contiguous": false,
+      "response": {
+        "files_keys": [
+          "file"
+        ],
+        "garbled_warning": true,
+        "post_keys": [
+          "PHP_SESSION_UPLOAD_PROGRESX"
+        ],
+        "progress": null,
+        "response_complete": true,
+        "response_sha256": "9c67464f13b1192ffe32984091fea53b5b7b4f589e43cd55bf721473393db68b",
+        "status": 200
+      }
+    },
+    {
+      "bare_cr_after_content_disposition_colon": true,
+      "body_bytes": 323,
+      "body_sha256": "e33592009fe8c1769949f5af0619cefc97104200be8a615ab7ba4f5c8c61d36a",
+      "content_type": "multipart/form-data; boundary=B",
+      "label": "CR3",
+      "physical_progress_header_lines": 27,
+      "raw_protected_name_contiguous": false,
+      "response": {
+        "files_keys": [
+          "file"
+        ],
+        "garbled_warning": true,
+        "post_keys": [
+          "PHP_SESSION_UPLOAD_PROGRESS"
+        ],
+        "progress": "bare-cr-reconstruction-probe",
+        "response_complete": true,
+        "response_sha256": "203d3832854396add1611ffc981dfb20f803d5da64ab14cfddf7ec6eb1c47b96",
+        "status": 200
+      }
+    }
+  ],
+  "schema": "cfctf-r8/bare-cr-reconstruction-lab/1",
+  "target": "http://127.0.0.1:19821/parser_probe.php",
+  "verdict": "PASS"
+}

@@ -1,0 +1,227 @@
+{
+  "code": {
+    "attempt": 1,
+    "direct_measurement": true,
+    "dtor": "0x7f1db37b47a0",
+    "libphp": "0x7f1db3000000",
+    "profile_offset": "0x7b47a0",
+    "sources": [
+      "fatal-pDestructor"
+    ]
+  },
+  "code_attempts": [
+    {
+      "index": 1,
+      "libphp": "0x7f1db3000000",
+      "sources": [
+        "fatal-pDestructor"
+      ],
+      "strict": true,
+      "tried_values": [
+        419296625940224
+      ]
+    }
+  ],
+  "completed_utc": "2026-11-02T19:48:34Z",
+  "edge_tag": {
+    "enabled": false,
+    "mode": null,
+    "tag_sha256": null
+  },
+  "fresh_terminal": {
+    "backend_disconnect": true,
+    "complete_responses": 0,
+    "destroy_error": null,
+    "destroy_response_observed": false,
+    "pipelined": true,
+    "requests_sent": 2,
+    "retire_evidence": true
+  },
+  "heap": {
+    "attempt": 1,
+    "base": "0x7f1db1400000",
+    "direct_measurement": true,
+    "pointer": "0x7f1db14a6f00",
+    "pressure": 440000,
+    "tried": 419296515673376,
+    "tried_formula": "3*pointer+32"
+  },
+  "heap_attempts": [
+    {
+      "heap": "0x7f1db1400000",
+      "index": 1,
+      "pointer": "0x7f1db14a6f00",
+      "pressure": 440000,
+      "strict": true,
+      "tried": 419296515673376,
+      "tried_formula": "3*pointer+32",
+      "tried_values": [
+        419296515673376
+      ]
+    }
+  ],
+  "live": false,
+  "native_tag": {
+    "enabled": false,
+    "mode": null,
+    "tag_sha256": null
+  },
+  "outgoing": [
+    {
+      "edge_tagged": false,
+      "index": 1,
+      "native_tagged": false,
+      "stage": "heap-arm-01"
+    },
+    {
+      "edge_tagged": false,
+      "index": 2,
+      "native_tagged": false,
+      "stage": "heap-flush-01"
+    },
+    {
+      "edge_tagged": false,
+      "index": 3,
+      "native_tagged": false,
+      "stage": "heap-disclose-01"
+    },
+    {
+      "edge_tagged": false,
+      "index": 4,
+      "native_tagged": false,
+      "stage": "code-arm-01"
+    },
+    {
+      "edge_tagged": false,
+      "index": 5,
+      "native_tagged": false,
+      "stage": "code-disclose-01"
+    },
+    {
+      "edge_tagged": false,
+      "index": 6,
+      "native_tagged": false,
+      "stage": "retire-seed"
+    },
+    {
+      "edge_tagged": false,
+      "index": 7,
+      "native_tagged": false,
+      "stage": "retire-destroy"
+    },
+    {
+      "edge_tagged": false,
+      "index": 8,
+      "native_tagged": false,
+      "stage": "fresh-seed"
+    },
+    {
+      "edge_tagged": false,
+      "index": 9,
+      "native_tagged": false,
+      "stage": "fresh-destroy"
+    },
+    {
+      "edge_tagged": false,
+      "index": 10,
+      "native_tagged": false,
+      "stage": "proof"
+    }
+  ],
+  "proof_attempt_id": null,
+  "proof_path": "/php/Q",
+  "request_cap_including_verifier": 16,
+  "request_count": 10,
+  "responses": [
+    {
+      "attempt_id": "",
+      "connection_header": "keep-alive",
+      "entity_bytes": 475,
+      "entity_sha256": "afebd855c32df78ce69084f42b7c63d48ce7020d2486815ca2627fc5159cdead",
+      "header_bytes": 250,
+      "header_sha256": "05c08dbf4d87371e94e30525974f10bceaad8643f41f9f588d778e14ce90d92e",
+      "normalized_response_sha256": "e98e9f3475e22eb10e4985505bde3ec706268641a724d1de69edb20f578e2868",
+      "stage": "heap-arm-01",
+      "status": 200
+    },
+    {
+      "attempt_id": "",
+      "connection_header": "keep-alive",
+      "entity_bytes": 149,
+      "entity_sha256": "21f65f9cdd57f9453d5761a2587f4c1ce75457d6099e0c493f07982ec275fa08",
+      "header_bytes": 249,
+      "header_sha256": "fedfaeaebed9208bdebcecd159d0ad09a807c05744ac30762a56bc4a8822e9a1",
+      "normalized_response_sha256": "565a41e4c46e9851ca3c802935610a710f7962d007425b03dbd4da399b078d6b",
+      "stage": "heap-flush-01",
+      "status": 200
+    },
+    {
+      "attempt_id": "",
+      "connection_header": "keep-alive",
+      "entity_bytes": 160,
+      "entity_sha256": "d5f5635005f4c48e8e11b6cbfead9dc1d932be4fcad25030e40b1824d394a8ff",
+      "header_bytes": 249,
+      "header_sha256": "9c26f89665bc83c617d48c0e565f60d470a59c7f969f1deb7b96b2f4595107ca",
+      "normalized_response_sha256": "f602d2ce5e56d2624aa4f4fb5606d8b0f99716488cbc15a60d04b4a6e3631adb",
+      "stage": "heap-disclose-01",
+      "status": 200
+    },
+    {
+      "attempt_id": "",
+      "connection_header": "keep-alive",
+      "entity_bytes": 476,
+      "entity_sha256": "387ad4edcf838fa7d72f42920e7761162496e3a7c0f50eb9e3b7046e72f3e2e6",
+      "header_bytes": 249,
+      "header_sha256": "6f46aaa9072427d9f0bac3c8667e2c05b86ce207cc69d2beef016b059d883bbb",
+      "normalized_response_sha256": "a41d18fadeb3d0f81bf9d1de9b06fd8358e2d3f3a7a502dce165c7cb34cb0c98",
+      "stage": "code-arm-01",
+      "status": 200
+    },
+    {
+      "attempt_id": "",
+      "connection_header": "keep-alive",
+      "entity_bytes": 160,
+      "entity_sha256": "1ac92eee7df2ab85022a933290c89b003a18940e71322aee8d6d0ce1a55430b6",
+      "header_bytes": 249,
+      "header_sha256": "22363c7726e1b92626b5519728eab12df6216adc1cdffa34645f110b033faa25",
+      "normalized_response_sha256": "42456fbe0adee4c86ffffb53977642a60e7768172f69280ddffba1136cc5c9b3",
+      "stage": "code-disclose-01",
+      "status": 200
+    },
+    {
+      "attempt_id": "",
+      "connection_header": "close",
+      "entity_bytes": 38,
+      "entity_sha256": "d21baa9f0412ece0cd8af47dfe8ee01b5626b0ce5c8e9c41b2f87de1dc860d62",
+      "header_bytes": 217,
+      "header_sha256": "78a5f2a4c18ba9a0c6177cb2cad2f50fba49a323c77d8a549000f259f22d1b49",
+      "normalized_response_sha256": "e9006d4ccc228a2dfeca112d5b30e19d1860f2cf75db293021d997d7c88f6016",
+      "stage": "proof",
+      "status": 200
+    }
+  ],
+  "sacrificial_terminal": {
+    "backend_disconnect": true,
+    "complete_responses": 0,
+    "destroy_error": null,
+    "destroy_response_observed": false,
+    "pipelined": true,
+    "requests_sent": 2,
+    "retire_evidence": true
+  },
+  "schema": "cfctf-r8/single-connection-v2/1",
+  "started_utc": "2026-11-02T19:48:30Z",
+  "strict_pair": {
+    "direct_measurements": true,
+    "heap": "0x7f1db1400000",
+    "libphp": "0x7f1db3000000",
+    "libphp_minus_heap": "0x1c00000",
+    "same_client_connection": true
+  },
+  "target": "http://127.0.0.1:19824/php/index.php",
+  "terminal_transport": "http1-pipeline",
+  "verdict": "LAB_FLAG_CAPTURED",
+  "verifier_attempt_id": null,
+  "verifier_attempt_id_source": null,
+  "verifier_calls": 0
+}

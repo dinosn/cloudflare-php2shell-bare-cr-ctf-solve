@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+dry-run/
+live-run/
+
+# Never commit live secrets or raw responses that contain them.
+evidence-private/flag.txt
+evidence-private/*.raw
+
