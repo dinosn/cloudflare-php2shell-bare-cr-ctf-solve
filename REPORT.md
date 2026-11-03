@@ -111,7 +111,7 @@ The earlier submission was closed as a duplicate of `#4155237` because both comp
 - previous method: inspection-window displacement with a large inert prefix;
 - this method: bare-CR and colonless-line reconstruction at native body offset 0.
 
-The public 323-byte control set is sufficient to demonstrate that parser distinction without running the exploit. The accepted flag and unchanged terminal schedule demonstrate impact, not distinctness.
+The public 323-byte control set is sufficient to demonstrate that parser distinction without running the exploit. The new flag, changed ASLR values, terminal cadence, and sandbox reset are impact or run-state evidence, not distinctness. Distinctness rests only on the bare-CR MIME-header reconstruction at native body offset 0.
 
 ## Exploitability Analysis
 
@@ -127,7 +127,15 @@ The accepted run directly measured a same-run pair:
 
 The terminal ran `A80/B25/S25/D25`. All `A`, `B`, and `S` requests passed their expected OOM gates. Of 25 `D` responses, 22 were HTTP 200 and three were HTTP 500; 18 contained the expected 81,920-byte OOM, and four contained both the per-run marker and a parsed flag. `D8` was the verifier candidate.
 
-The derived-adjacent terminal used the measured addresses to open `/flag`, read it, and write the response-local marker and flag to the client socket. This establishes direct control-flow execution sufficient to invoke the sandbox's `open`, `read`, and `write` paths, not merely WAF traversal or an HTTP 200 response.
+### Executed operation
+
+The accepted terminal did not call `system()` and did not execute a shell command. Its derived-adjacent ROP chain used `open64@plt`, `read@plt`, and `write@plt` from the assessed official image. It opened `/flag` three times to use adjacent file descriptors deterministically:
+
+1. the first `open64` returned `fd1`; subtracting one derived the client socket, to which the chain wrote the HTTP response header and early marker;
+2. the second `open64` returned `fd2`; the chain passed `fd2` to `read@plt` and requested exactly 40 bytes into the forged buffer;
+3. the third `open64` returned `fd3`; subtracting three derived the client socket again, to which the chain wrote the per-run marker followed by that buffer.
+
+This establishes direct control-flow execution sufficient to read the sandbox flag, not merely WAF traversal or an HTTP 200 response. The earlier experimental `zif_system` layout mentioned above did not pivot and is not the accepted execution path.
 
 ### Controls and alternative explanations
 
@@ -148,6 +156,59 @@ Reliability remains workload- and allocator-dependent. The accepted live run use
 
 The readable controller is `poc/bare_cr_accepted_schedule_live.py`; the compact carrier is `poc/bare_cr_carrier.py`; pinned supporting builders are under `poc/src/`. The controller hard-codes the authorized CTF endpoint, checks source and body hashes, requires a fresh private output directory, caps the verifier at one call, and refuses live execution unless `--authorized-live` is supplied.
 
+### Exact endpoint and HTTP envelope
+
+The accepted exploit connected with TLS to `php-rce.cloudflare.app:443` and sent:
+
+```http
+POST /php/index.php HTTP/1.1
+Host: php-rce.cloudflare.app
+Content-Type: multipart/form-data; boundary=<stage boundary>
+Content-Length: <exact body length>
+Connection: close
+```
+
+Every accepted exploit request used a raw multipart body with `Content-Length`. None used `Content-Encoding` or `Transfer-Encoding`, and every connection used `Connection: close`. The outer `Content-Type` remained the canonical `multipart/form-data; boundary=...` form. The bare-CR bypass bytes appeared only inside MIME part headers; no HTTP request-header ambiguity or compression was involved.
+
+The stage-specific envelope was:
+
+| Phase | User-Agent | Boundary | Additional accepted header state |
+|---|---|---|---|
+| Heap `A` | `cfctf-bridge-single-conn/1` | `S` repeated 17 times | none |
+| Heap `B` | `cfctf-bridge-single-conn/1` | `Z` repeated 12 times | none |
+| Code producer/consumer | `cfctf-r8-held-leak/1` | `COOKIE-LAB-BOUNDARY` | producer carries 1,001 deterministic empty cookie pairs |
+| Terminal `A` | `cfctf-bounded-d-cal/1` | `S` repeated 17 times | `Cookie: PHPSESSID=ra89a4d894e3ff478af` |
+| Terminal `B` | `cfctf-bounded-d-cal/1` | `B` repeated 10 times | same PHP session cookie |
+| Terminal `S` and `D` | `cfctf-bounded-d-cal/1` | `AMP128BOUNDARY` | same PHP session cookie |
+
+The single verifier call also used TLS to port 443 and sent `POST /api/verify HTTP/1.1` with `Content-Type: application/json`, `Content-Length`, and `Connection: close`. Its JSON object contained the response-local attempt ID and the private flag.
+
+### Accepted byte provenance
+
+Raw exploit requests were not retained, so this report does not present reconstructed bytes as packet captures. The packaged readable PoC is the canonical byte serializer, and the receipts bind its generated bodies to exact lengths and SHA-256 values. Before the carrier transformation, it builds the accepted bodies as follows:
+
+- heap `A`: `steer_ht.sc.arm_body()`;
+- heap `B`: `steer_ht.build_b(900, 550000)`;
+- code producer: `producer_body(code_shape(66), COOKIE_BOUNDARY)`;
+- code consumer: `consumer_body("code", COOKIE_BOUNDARY)`;
+- terminal `A`: `wave.single.arm_body()`;
+- terminal `B`: `finish_b_multipart(build_b_fields(426950, 21))`;
+- terminal `S`: `build_seed_body(heap, libphp, 0x59400, 10, marker, seeds=1, oom_count=0, oom_depth=57, oom_headers=600000, pressure_fields=45, probe=False, profile=official-docker, fd_mode=derived-adjacent)`;
+- terminal `D`: `build_fire_body(402500)`.
+
+For the acquisition bodies and the protected terminal `A`/`B` bodies, the controller applies `bare_cr_carrier.apply_bare_cr()` once per body. Each body contains one protected disposition, so this transformation adds 52 bytes. For terminal `S` and `D`, it replaces all 47 canonical dispositions with equal-length `Content-Disposition:\rform-data;` values; the size delta is zero.
+
+The dynamic values in the accepted serialization were:
+
+| Parameter | Accepted value |
+|---|---|
+| Heap base | `0x7f2b4d800000` |
+| `libphp` base | `0x7f2b4f200000` |
+| Forged-object block | `0x59400` |
+| Binary profile | `official-docker` |
+| Response marker | `SEEDFIRE-bf614c|` |
+| Client-descriptor seed | `10` |
+
 The accepted wire bodies were:
 
 | Phase | Requests | Body bytes | SHA-256 |
@@ -162,6 +223,20 @@ The accepted wire bodies were:
 | Terminal `D` | 25 | 6,138,311 | `d7ea90a4da90cbf4b2942f707276c22d463859734c72e70c9be76281633b7dbf` |
 
 The complete accepted-run metadata is in `evidence-private/run-summary.json`, `heap-receipt.json`, `code-receipt.json`, `terminal-receipt.json`, and `carrier-log.json` under `evidence-private/`.
+
+### Complete accepted sequence
+
+The accepted controller sent 195 exploit POSTs followed by exactly one verifier POST:
+
+1. Start all 15 heap `A` requests concurrently and complete that wave; then start all 15 heap `B` requests concurrently.
+2. Create five code producers and five code consumers. Pre-stage every connection by sending `body[:-1]`. Release the final byte for the five producers first, then release the final byte for the five consumers.
+3. Continue only if the receipts provide a strict same-run heap/`libphp` pair that is 2 MiB aligned and passes the profile and vote gates.
+4. Send terminal `A` as a complete 80-request wave, followed by terminal `B` as a complete 25-request wave.
+5. Start 25 terminal `S` requests concurrently. After each successful `S` completes, enqueue exactly one same-index `D` request.
+6. Select the first qualifying `D` response containing the exact per-run marker immediately followed by a parsed flag and a canonical `X-Attempt-ID` from that same response.
+7. Submit that attempt ID and flag in exactly one JSON request to `/api/verify`.
+
+The strict-pair gate selected heap `0x7f2b4d800000` and `libphp` `0x7f2b4f200000`, each with two agreeing observations, before any terminal request was sent.
 
 ### Offline dry run
 
@@ -193,14 +268,14 @@ The PoC can consume substantial CPU and memory, force worker OOMs, and cause san
 
 ### Accepted live result
 
-The winning `D8` response is preserved as `evidence-private/winning-D-008.raw`; only its headers are reproduced here:
+The controller started at `2026-11-03T02:43:13Z`. The winning `D8` response arrived at `2026-11-03T02:43:25Z`; only its non-secret response metadata is reproduced here:
 
 - HTTP 200;
 - `Date: Tue, 03 Nov 2026 02:43:25 GMT`;
 - `X-Attempt-ID: edb9d7db-9408-4f26-931e-751629d8691e`;
 - `CF-Ray: a54807fc2c29bc60-ZRH`.
 
-The verifier response is preserved as `evidence-private/verify-008.raw`:
+The verifier responded, and the controller finished, at `2026-11-03T02:43:27Z`:
 
 - HTTP 200;
 - `Date: Tue, 03 Nov 2026 02:43:27 GMT`;
@@ -209,7 +284,9 @@ The verifier response is preserved as `evidence-private/verify-008.raw`:
 - exploit ID `e5bdae33-f8ca-4144-a3cb-2bef8fc2c8c3`;
 - confirmation URL: `https://php-rce.cloudflare.app/exploits/e5bdae33-f8ca-4144-a3cb-2bef8fc2c8c3`.
 
-The verifier response body is 77 bytes with SHA-256 `9786286f70b59754f24201ac0ee38393c14317fb2f63635f133e7ea6c99c39f4`. The private flag is 36 bytes without its trailing newline and has SHA-256 `ab2a121586e6c4578177de1abf56c012a7657c67ef415f33b7bb57a3e630bc8a`.
+The API returned `verified: true` and the exploit ID that generated the UI confirmation permalink. A read-only GET of that permalink at `2026-11-03T11:39:56Z` returned HTTP/2 200 and rendered `PHP CTF`, `Verified`, exploit ID `e5bdae33-f8ca-4144-a3cb-2bef8fc2c8c3`, and attempt ID `edb9d7db-9408-4f26-931e-751629d8691e`. No screenshot of the UI was retained. The verifier response body is 77 bytes with SHA-256 `9786286f70b59754f24201ac0ee38393c14317fb2f63635f133e7ea6c99c39f4`. The private flag is 36 bytes without its trailing newline and has SHA-256 `ab2a121586e6c4578177de1abf56c012a7657c67ef415f33b7bb57a3e630bc8a`.
+
+No raw request was saved. The full winning response was retained privately as `winning-D-008.raw`, a 706-byte mode-0600 file with SHA-256 `e02e4114a1f21beb3df432f174f003108cb438946476b189bdf8beb980af1957`; the full verifier response was retained privately as `verify-008.raw`, a 1,018-byte mode-0600 file with SHA-256 `e4b7f4c32e65a8a1f372b32992a213f1279f99c0b4f83ca915566fc62af24447`. Both raw responses and `flag.txt` are excluded from Git and can be attached separately to the private HackerOne report if requested. The readable PoC and sanitized receipts are retained in the private Git repository.
 
 ## Remediation
 
